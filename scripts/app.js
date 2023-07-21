@@ -1,8 +1,13 @@
 const start = async () => {
+  if(check===true)
+  {
+    return;
+  }
+  check=true;
   let algoValue = Number(document.querySelector(".algo-menu").value);
   let speedValue = Number(document.querySelector(".speed-menu").value);
   let sizeValue = Number(document.querySelector(".size-menu").value);
-
+  
   if (algoValue === 0) {
     alert("No Algorithm Selected");
     return;
@@ -15,20 +20,23 @@ const start = async () => {
     alert("No Speed Selected");
     return;
   }
-
+  
   let algorithm = new sortAlgorithms(speedValue);
   if (algoValue === 1) await algorithm.BubbleSort();
   if (algoValue === 2) await algorithm.SelectionSort();
   if (algoValue === 3) await algorithm.InsertionSort();
   if (algoValue === 4) await algorithm.MergeSort();
   if (algoValue === 5) await algorithm.QuickSort();
+  check=false;
 };
 
 const RenderScreen = async () => {
+  check=false;
   await RenderList();
 };
 
 const RenderList = async () => {
+  check=false;
   let sizeValue = Number(document.querySelector(".size-menu").value);
   await clearScreen();
 
@@ -80,10 +88,12 @@ const randomList = async (Length) => {
 };
 
 const clearScreen = async () => {
+  check=false;
   document.querySelector(".array").innerHTML = "";
 };
 
 const response = () => {
+  check=false;
   let Navbar = document.querySelector(".navbar");
   if (Navbar.className === "navbar") {
     Navbar.className += " responsive";
@@ -91,7 +101,7 @@ const response = () => {
     Navbar.className = "navbar";
   }
 };
-
+var check=false;
 document.querySelector(".icon").addEventListener("click", response);
 document.querySelector(".start").addEventListener("click", start);
 document.querySelector(".size-menu").addEventListener("change", RenderScreen);
