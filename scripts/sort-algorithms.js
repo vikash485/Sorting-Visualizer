@@ -115,7 +115,7 @@ class sortAlgorithms {
             ++c, ++point) {
                 await this.help.pause();
                 this.list[c].setAttribute("value", newList[point]);
-                this.list[c].style.height = `${3.5*newList[point]}px`;
+                this.list[c].style.height = `${3.8*newList[point]}px`;
         }
         for(let c = start ; c <= end ; ++c) {
             this.list[c].setAttribute("class", "cell");
